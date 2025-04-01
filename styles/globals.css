@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#tsparticles canvas {
+  z-index: -1;
+}
+
+button {
+  @apply px-8 py-2 bg-white text-slate-700 rounded-lg cursor-pointer shadow-2xl font-bold border border-slate-700
+}
