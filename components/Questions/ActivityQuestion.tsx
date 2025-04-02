@@ -35,8 +35,11 @@ export default function ActivityQuestion(props:Props) {
     ]
 
     const handleClick = (activity:ActivityType) => {
-        setAnswer(() => activity.title)
-        setCurrentQuestion(() => "recovery")
+        setAnswer((curr:any) => ({
+            ...curr,
+            activity: activity.title
+        }))
+        setCurrentQuestion(() => "drinks")
     }
     return(
         <div className="w-fit p-8 mx-auto mt-10 ">
