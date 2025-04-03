@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Card from "../Card";
 
 interface Props {
@@ -50,7 +50,7 @@ export default function ActivityQuestion(props:Props) {
                     <div key={index} onClick={() => handleClick(activity)}>
                         <Card 
                             imagePath={activity.imagePath} 
-                            title={activity.title} 
+                            title={activity.title}
                         />
                     </div>
                 ))}

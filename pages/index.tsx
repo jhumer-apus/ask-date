@@ -6,6 +6,8 @@ import AudioPlay from "@/components/AudioPlay";
 import { JSX, SetStateAction, useMemo, useState } from "react";
 import ActivityQuestion from "@/components/Questions/ActivityQuestion";
 import DrinkQuestion from "@/components/Questions/DrinkQuestion";
+import MealQuestion from "@/components/Questions/MealQuestion";
+import ScheduleQuestion from "@/components/Questions/ScheduleQuestion";
 
 type SurveyQuestionType = {
   [key:string]: JSX.Element
@@ -15,11 +17,10 @@ export default function Home() {
   const [answer,setAnswer] = useState({
     activity: "" ,
     drinks: [],
-    meal: "",
+    meals: [],
   })
   const [currentQuestion, setCurrentQuestion] = useState<string>("permission")
 
-  console.table(answer)
   const Questions:SurveyQuestionType = useMemo(() => (
       {
         permission:(
@@ -40,6 +41,18 @@ export default function Home() {
             setAnswer={setAnswer}          
           />
         ),
+        meals: (
+          <MealQuestion
+            setCurrentQuestion={setCurrentQuestion} 
+            setAnswer={setAnswer}          
+          />
+        ),
+        schedule: (
+          <ScheduleQuestion
+            setCurrentQuestion={setCurrentQuestion} 
+            setAnswer={setAnswer}     
+          />
+        )
       }
     ), []
   )
