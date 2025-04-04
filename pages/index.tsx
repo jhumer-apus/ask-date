@@ -8,6 +8,8 @@ import ActivityQuestion from "@/components/Questions/ActivityQuestion";
 import DrinkQuestion from "@/components/Questions/DrinkQuestion";
 import MealQuestion from "@/components/Questions/MealQuestion";
 import ScheduleQuestion from "@/components/Questions/ScheduleQuestion";
+import HangoutQuestion from "@/components/Questions/HangoutQuestion";
+import ReviewQuestion from "@/components/Questions/ReviewQuestion";
 
 type SurveyQuestionType = {
   [key:string]: JSX.Element
@@ -18,6 +20,7 @@ export default function Home() {
     activity: "" ,
     drinks: [],
     meals: [],
+    hangout: ""
   })
   const [currentQuestion, setCurrentQuestion] = useState<string>("permission")
 
@@ -47,14 +50,25 @@ export default function Home() {
             setAnswer={setAnswer}          
           />
         ),
+        hangout: (
+          <HangoutQuestion
+            setCurrentQuestion={setCurrentQuestion} 
+            setAnswer={setAnswer}          
+          />
+        ),
         schedule: (
           <ScheduleQuestion
             setCurrentQuestion={setCurrentQuestion} 
             setAnswer={setAnswer}     
           />
+        ),
+        review: (
+          <ReviewQuestion
+            answer={answer}  
+          />
         )
       }
-    ), []
+    ), [answer]
   )
   return (
     <div>

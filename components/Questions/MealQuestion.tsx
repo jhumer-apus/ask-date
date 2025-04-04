@@ -16,6 +16,7 @@ export default function MealQuestion(props:Props) {
 
     const { setCurrentQuestion, setAnswer } = props
     const [selectedMeals, setSelectedMeals] = useState<any[]>([])
+    const [error, setError] = useState<string>("")
     
 
     const meals:MealType[] = [
@@ -34,10 +35,17 @@ export default function MealQuestion(props:Props) {
     ]
 
     const handleClick = () => {
+
+        if(selectedMeals.length < 1) {
+            setError(() => "Please select 1 or more type of meal you like")
+            return
+        }
+
         setAnswer((curr:any) => ({
+            ...curr,
             meals: [...selectedMeals]
         }))
-        setCurrentQuestion(() => "schedule")
+        setCurrentQuestion(() => "hangout")
     }
 
     const handleSelected = (title:string) => {
@@ -68,6 +76,9 @@ export default function MealQuestion(props:Props) {
                 <button className="bg" onClick={() => handleClick()}>
                     Next
                 </button>
+            </div>
+            <div className="text-3xl font-bold text-center mt-2">
+                {error}
             </div>
         </div>
     )

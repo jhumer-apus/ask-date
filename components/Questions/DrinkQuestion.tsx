@@ -46,6 +46,7 @@ export default function DrinkQuestion(props:Props) {
         }
 
         setAnswer((curr:any) => ({
+            ...curr,
             drinks: [...selectedDrinks]
         }))
         setCurrentQuestion(() => "meals")
@@ -80,7 +81,7 @@ export default function DrinkQuestion(props:Props) {
                     Next
                 </button>
             </div>
-            <div className="text-red-400 bg-purple-900 text-3xl font-bold text-center mt-2">
+            <div className="text-3xl font-bold text-center mt-2">
                 {error}
             </div>
         </div>
