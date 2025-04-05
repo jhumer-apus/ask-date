@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import ParticleConfig from "@/components/ParticleConfig";
 import PermissionQuestion from "@/components/Questions/PermissionQuestion";
 import AudioPlay from "@/components/AudioPlay";

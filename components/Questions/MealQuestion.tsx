@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import Card from "../Card";
-import Checkbox from "../Checkbox";
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
