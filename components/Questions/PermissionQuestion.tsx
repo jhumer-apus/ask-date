@@ -6,6 +6,8 @@ interface Props {
 }
 export default function PermissionQuestion(props:Props) {
     const { setPlaySongs, setCurrentQuestion } = props
+    const [isHovered, setIsHovered] = useState(false);
+    const [width , setWidth] = useState(0)
 
     const [position, setPosition] = useState<any>(
         {
@@ -13,7 +15,14 @@ export default function PermissionQuestion(props:Props) {
             height: 0,
         }
     )
-    const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize); // Listen for resize events
+        return () => window.removeEventListener('resize', handleResize); // Clean up listener on component unmount
+    }, []);
     
     const onMouseEnter = () => {
         setIsHovered(true)
@@ -35,12 +44,13 @@ export default function PermissionQuestion(props:Props) {
         <div className="mx-auto w-fit mt-10">
             <img src="gif/cat_asking.gif"/>
             <p className="text-center text-2xl font-bold p-2 rounded-lg my-2">Can I take you out for a Casual Date?</p>
-            <div className="mx-auto w-56 mt-10">
+            <div className="mx-auto w-84 mt-10">
                 <button onClick={() => handleYes()}>
                     Yes
                 </button>
                 <button 
-                    className={`absolute ml-8 ${isHovered? `transition-all duration-300 absolute`: "relative"}`}
+                    className={`transition-all duration-300 ml-8 ${isHovered? `absolute`: "relative"}`}
+                    onClick={() => handleYes()}
                     onMouseEnter={onMouseEnter}
                     style={
                         {
@@ -49,7 +59,7 @@ export default function PermissionQuestion(props:Props) {
                         }
                     }
                 >
-                    No
+                    {width > 640 ? "No": "OO NAMAN🤩"}
                 </button>
             </div>
         </div>

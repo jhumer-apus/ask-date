@@ -10,6 +10,7 @@ import MealQuestion from "@/components/Questions/MealQuestion";
 import ScheduleQuestion from "@/components/Questions/ScheduleQuestion";
 import HangoutQuestion from "@/components/Questions/HangoutQuestion";
 import ReviewQuestion from "@/components/Questions/ReviewQuestion";
+import Final from "@/components/Questions/Final";
 
 type SurveyQuestionType = {
   [key:string]: JSX.Element
@@ -21,6 +22,7 @@ export default function Home() {
     drinks: [],
     meals: [],
     hangout: ""
+
   })
   const [currentQuestion, setCurrentQuestion] = useState<string>("permission")
 
@@ -65,8 +67,10 @@ export default function Home() {
         review: (
           <ReviewQuestion
             answer={answer}  
+            setCurrentQuestion={setCurrentQuestion}
           />
-        )
+        ),
+        final: (<Final />)
       }
     ), [answer]
   )
