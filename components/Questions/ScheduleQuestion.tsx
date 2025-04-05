@@ -3,12 +3,13 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import dayjs, { Dayjs } from "dayjs";
+import { AnswerType } from "@/types";
 
 
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
-    setAnswer: Dispatch<SetStateAction<any>>
+    setAnswer: Dispatch<SetStateAction<AnswerType>>
 }
 
 
@@ -17,7 +18,7 @@ export default function ScheduleQuestion(props:Props) {
     const { setCurrentQuestion, setAnswer } = props
     const [error, setError] = useState<string>("")
 
-    const [date, setDate] = useState<Date | Dayjs | null | string>(null)
+    const [date, setDate] = useState<null | string>(null)
     
 
     const handleClick = () => {
@@ -27,7 +28,7 @@ export default function ScheduleQuestion(props:Props) {
             return
         }
 
-        setAnswer((curr:any) => ({
+        setAnswer((curr:AnswerType) => ({
             ...curr,
             date: date
         }))

@@ -14,12 +14,12 @@ export default function AudioPlay(props:Props) {
     ]
 
 
-    const audioRef = useRef<any>(null);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         if(isPlay) {
             if (audioRef.current) {
-                audioRef.current.play().catch((error:any) => {
+                audioRef.current.play().catch((error:Error) => {
                     console.error('Error attempting to play audio:', error);
                 });
             }

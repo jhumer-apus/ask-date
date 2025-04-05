@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 import Card from "../Card";
+import { AnswerType } from "@/types";
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
-    setAnswer: Dispatch<SetStateAction<any>>
+    setAnswer: Dispatch<SetStateAction<AnswerType>>
 }
 
 type ActivityType = {
@@ -35,7 +36,7 @@ export default function ActivityQuestion(props:Props) {
     ]
 
     const handleClick = (activity:ActivityType) => {
-        setAnswer((curr:any) => ({
+        setAnswer((curr:AnswerType) => ({
             ...curr,
             activity: activity.title
         }))

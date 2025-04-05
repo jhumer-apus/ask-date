@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import Card from "../Card";
+import { AnswerType } from "@/types";
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
-    setAnswer: Dispatch<SetStateAction<any>>
+    setAnswer: Dispatch<SetStateAction<AnswerType>>
 }
 
 type MealType = {
@@ -14,7 +15,7 @@ type MealType = {
 export default function MealQuestion(props:Props) {
 
     const { setCurrentQuestion, setAnswer } = props
-    const [selectedMeals, setSelectedMeals] = useState<any[]>([])
+    const [selectedMeals, setSelectedMeals] = useState<string[]>([])
     const [error, setError] = useState<string>("")
     
 
@@ -40,7 +41,7 @@ export default function MealQuestion(props:Props) {
             return
         }
 
-        setAnswer((curr:any) => ({
+        setAnswer((curr:AnswerType) => ({
             ...curr,
             meals: [...selectedMeals]
         }))
@@ -49,9 +50,9 @@ export default function MealQuestion(props:Props) {
 
     const handleSelected = (title:string) => {
         if(selectedMeals.includes(title)) {
-            setSelectedMeals((curr:any) => curr.filter((meal:string) => meal != title))
+            setSelectedMeals((curr:string[]) => curr.filter((meal:string) => meal != title))
         } else {
-            setSelectedMeals((curr:any) => [...curr,title])
+            setSelectedMeals((curr:string[]) => [...curr,title])
         }
     }
 

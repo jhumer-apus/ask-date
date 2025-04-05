@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 import Card from "../Card";
+import { AnswerType } from "@/types";
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
-    setAnswer: Dispatch<SetStateAction<any>>
+    setAnswer: Dispatch<SetStateAction<AnswerType>>
 }
 
 type HangoutType = {
@@ -31,7 +32,7 @@ export default function HangoutQuestion(props:Props) {
     ]
 
     const handleClick = (hangout:HangoutType) => {
-        setAnswer((curr:any) => ({
+        setAnswer((curr:AnswerType) => ({
             ...curr,
             hangout: hangout.title
         }))

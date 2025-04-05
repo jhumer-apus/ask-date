@@ -4,15 +4,24 @@ interface Props {
     setPlaySongs: Dispatch<SetStateAction<boolean>>;
     setCurrentQuestion: Dispatch<SetStateAction<string>>
 }
+
+interface PositionType {
+    top: number;
+    left: number
+}
+// interface PositionType {
+//     width: number;
+//     height: number
+// }
 export default function PermissionQuestion(props:Props) {
     const { setPlaySongs, setCurrentQuestion } = props
     const [isHovered, setIsHovered] = useState(false);
     const [width , setWidth] = useState(0)
 
-    const [position, setPosition] = useState<any>(
+    const [position, setPosition] = useState<PositionType>(
         {
-            width: 0,
-            height: 0,
+            top: 0,
+            left: 0,
         }
     )
 
@@ -23,14 +32,17 @@ export default function PermissionQuestion(props:Props) {
         window.addEventListener('resize', handleResize); // Listen for resize events
         return () => window.removeEventListener('resize', handleResize); // Clean up listener on component unmount
     }, []);
+
+    useEffect(() => {
+        setWidth(window.innerWidth);
+    },[])
     
     const onMouseEnter = () => {
         setIsHovered(true)
-        setPosition((curr:any) => (
+        setPosition(() => (
             {
                 top: Math.random() * (window.innerHeight-150),
                 left: Math.random() * (window.innerWidth-150),
-
             }
         ))
 
@@ -49,7 +61,7 @@ export default function PermissionQuestion(props:Props) {
                     Yes
                 </button>
                 <button 
-                    className={`transition-all duration-300 ml-8 ${isHovered? `absolute`: "relative"}`}
+                    className={`absolute ml-8 ${isHovered? `absolute transition-all duration-300 `: "relative"}`}
                     onClick={() => handleYes()}
                     onMouseEnter={onMouseEnter}
                     style={

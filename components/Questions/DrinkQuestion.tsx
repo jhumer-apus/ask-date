@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import Card from "../Card";
+import { AnswerType } from "@/types";
 
 interface Props {
     setCurrentQuestion: Dispatch<SetStateAction<string>>
-    setAnswer: Dispatch<SetStateAction<any>>
+    setAnswer: Dispatch<SetStateAction<AnswerType>>
 }
 
 type DrinkType = {
@@ -14,7 +15,7 @@ type DrinkType = {
 export default function DrinkQuestion(props:Props) {
 
     const { setCurrentQuestion, setAnswer } = props
-    const [selectedDrinks, setSelectedDrinks] = useState<any[]>([])
+    const [selectedDrinks, setSelectedDrinks] = useState<string[]>([])
     const [error, setError] = useState<string>("")
     
 
@@ -44,7 +45,7 @@ export default function DrinkQuestion(props:Props) {
             return
         }
 
-        setAnswer((curr:any) => ({
+        setAnswer((curr:AnswerType) => ({
             ...curr,
             drinks: [...selectedDrinks]
         }))
@@ -53,9 +54,9 @@ export default function DrinkQuestion(props:Props) {
 
     const handleSelected = (title:string) => {
         if(selectedDrinks.includes(title)) {
-            setSelectedDrinks((curr:any) => curr.filter((drink:string) => drink != title))
+            setSelectedDrinks((curr:string[]) => curr.filter((drink:string) => drink != title))
         } else {
-            setSelectedDrinks((curr:any) => [...curr,title])
+            setSelectedDrinks((curr:string[]) => [...curr,title])
         }
     }
 

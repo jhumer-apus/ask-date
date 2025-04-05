@@ -1,9 +1,16 @@
+import { AnswerType } from "@/types";
 import axios from "axios";
-import { Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 interface Props {
-    answer: any;
-    setCurrentQuestion: Dispatch<SetStateAction<any>>
+    answer: AnswerType;
+    setCurrentQuestion: Dispatch<SetStateAction<string>>
+}
+
+interface MailOptionType {
+    email: string,
+    message: string,
+    girl_name: string | null | undefined
 }
 
 export default function ReviewQuestion(props: Props) {
@@ -13,7 +20,7 @@ export default function ReviewQuestion(props: Props) {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
 
-    const [mailOptions, setMailOptions] = useState<any>({
+    const [mailOptions, setMailOptions] = useState<MailOptionType>({
         email: "",
         message: "",
         girl_name: girlName
@@ -22,7 +29,7 @@ export default function ReviewQuestion(props: Props) {
     const drinks = answer.drinks.join(", ");
     const meals = answer.meals.join(", ");
 
-    const sendMail = async (e:any) => {
+    const sendMail = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setIsSubmitting(() => true)
@@ -46,7 +53,7 @@ export default function ReviewQuestion(props: Props) {
         }
 
         await axios.post(backendUrl + "/send-mail", payload)
-            .then(res => {
+            .then(() => {
                 console.log("Success")
                 setIsSubmitting(() => false)
                 setCurrentQuestion(() => "final")
@@ -58,8 +65,9 @@ export default function ReviewQuestion(props: Props) {
             })
     }
 
-    const handleChangeEmail = (e:any) => {
-        setMailOptions(() => ({
+    const handleChangeEmail = (e:ChangeEvent<HTMLInputElement>) => {
+        setMailOptions((curr:MailOptionType) => ({
+            ...curr,
             email:e.target.value
         }))
     }
@@ -70,7 +78,7 @@ export default function ReviewQuestion(props: Props) {
                 <p>2. Then for recovery we drink some of this <b>{drinks}</b></p>
                 <p>3. Our meal consists of either <b>{meals}</b></p>
                 <p>4. Lastly, we are going to hang out at <b>{answer.hangout}</b></p>
-                <p>On <b>{answer.date}</b></p>
+                <p>On <b>{answer?.date?? ""}</b></p>
                 <br></br>
                 <div className="flex flex-col w-fit m-auto">
                     <label>Please Type Your Email and Send It</label>
