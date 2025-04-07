@@ -9,6 +9,7 @@ export default function AudioPlay(props:Props) {
 
     const [currSongIndex, setCurrSongIndex] = useState<number>(0)
     const songs = [    
+        "songs/lamore-dice-ciao.mp3",
         "songs/la-vien-en-rose-piano.mp3",
         "songs/la-vien-en-rose-trumpet.mp3",
     ]
