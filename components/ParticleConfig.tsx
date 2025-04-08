@@ -18,7 +18,7 @@ export default function ParticleConfig() {
     const options:ISourceOptions = {
         background: {
             color: {
-                value: "#5b3758",
+                value: "#FF69B4",
             },
         },
         fpsLimit: 120,
