@@ -41,8 +41,8 @@ export default function PermissionQuestion(props:Props) {
         setIsHovered(true)
         setPosition(() => (
             {
-                top: Math.random() * (window.innerHeight-150),
-                left: Math.random() * (window.innerWidth-150),
+                top: Math.random() * (window.innerHeight-300),
+                left: Math.random() * (window.innerWidth-300),
             }
         ))
 
