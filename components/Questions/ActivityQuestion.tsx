@@ -44,8 +44,8 @@ export default function ActivityQuestion(props:Props) {
     }
     return(
         <div className="w-fit p-8 mx-auto mt-10 ">
-            <p className="text-2xl font-bold text-slate-200">ENGAGING ACTIVITIES🤩</p>
-            <p className="text-xl text-2xl mt-10 font-semibold">Please Pick An Activity😁</p>
+            <p className="text-2xl font-bold text-slate-200">ACTIVITIES💪</p>
+            <p className="text-xl text-2xl mt-10 font-semibold">Please Pick An Activity</p>
             <div className="flex flex-col md:flex-row md:flex-wrap gap-8 w-fit mx-auto mt-4">
                 {activities.map((activity, index:number) => (
                     <div key={index} onClick={() => handleClick(activity)}>

@@ -55,13 +55,13 @@ export default function PermissionQuestion(props:Props) {
     return (
         <div className="mx-auto w-fit mt-10">
             <img src="gif/cat_asking.gif"/>
-            <p className="text-center text-2xl font-bold p-2 rounded-lg my-2">Can I take you out for a Casual Date?</p>
-            <div className="mx-auto w-84 mt-10">
+            <p className="text-center text-2xl font-bold p-2 rounded-lg my-2">Can I ask you out?</p>
+            <div className="w-84 mt-10">
                 <button onClick={() => handleYes()}>
                     Yes
                 </button>
                 <button 
-                    className={`absolute ml-8 ${isHovered? `absolute transition-all duration-300 `: "relative"}`}
+                    className={`absolute ml-38 ${isHovered? `absolute transition-all duration-300 `: "relative"}`}
                     onClick={() => handleYes()}
                     onMouseEnter={onMouseEnter}
                     style={
@@ -71,7 +71,7 @@ export default function PermissionQuestion(props:Props) {
                         }
                     }
                 >
-                    {width > 640 ? "No": "OO NAMAN🤩"}
+                    {width > 640 ? "No": "OO NAMAN"}
                 </button>
             </div>
         </div>

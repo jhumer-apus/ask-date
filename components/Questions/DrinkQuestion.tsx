@@ -63,8 +63,8 @@ export default function DrinkQuestion(props:Props) {
 
     return(
         <div className="w-fit p-8 mx-auto mt-10 ">
-            <p className="text-2xl font-bold text-slate-200">RECOVERY TIME🤩</p>
-            <p className="text-xl text-2xl mt-10 font-semibold">Please Select A Drink You Like😁</p>
+            <p className="text-2xl font-bold text-slate-200">RECOVERY🧋</p>
+            <p className="text-xl text-2xl mt-10 font-semibold">Please Select A Drink You Like</p>
             <div className="flex flex-col md:flex-row md:flex-wrap gap-8 w-fit mx-auto mt-4">
                 {drinks.map((drink, index:number) => (
                     <div key={index} onClick={() => handleSelected(drink.title)}>

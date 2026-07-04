@@ -40,8 +40,8 @@ export default function HangoutQuestion(props:Props) {
     }
     return(
         <div className="w-fit p-8 mx-auto mt-10 ">
-            <p className="text-2xl font-bold text-slate-200">Chillin Time🤩</p>
-            <p className="text-xl text-2xl mt-10 font-semibold">Please Pick A Place For a Hangout😁</p>
+            <p className="text-2xl font-bold text-slate-200">Chilling😊</p>
+            <p className="text-xl text-2xl mt-10 font-semibold">Please Pick A Place For a Hangout</p>
             <div className="flex flex-col md:flex-row md:flex-wrap gap-8 w-fit mx-auto mt-4">
                 {hangouts.map((hangout, index:number) => (
                     <div key={index} onClick={() => handleClick(hangout)}>

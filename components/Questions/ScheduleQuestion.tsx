@@ -41,7 +41,7 @@ export default function ScheduleQuestion(props:Props) {
 
     return(
         <div className="w-fit p-8 mx-auto mt-10 ">
-            <p className="text-2xl font-bold text-slate-200">SCHEDULE HEHEHE😁</p>
+            <p className="text-2xl font-bold text-slate-200">WHEN?😁</p>
             <p className="text-xl text-2xl mt-10 font-semibold">Please Select A Date You Prefer:</p>
             <div className="bg-white p-8 rounded-2xl mt-4 shadow-2xl">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

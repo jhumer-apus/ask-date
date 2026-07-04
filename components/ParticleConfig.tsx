@@ -18,7 +18,7 @@ export default function ParticleConfig() {
     const options:ISourceOptions = {
         background: {
             color: {
-                value: "#FF69B4",
+                value: "#000000",
             },
         },
         fpsLimit: 120,
@@ -46,10 +46,10 @@ export default function ParticleConfig() {
         },
         particles: {
             color: {
-                value: "#ffffff",
+                value: "#B4C424",
             },
             links: {
-                color: "#ffffff",
+                color: "#B4C424",
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
